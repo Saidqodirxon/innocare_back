@@ -1,7 +1,10 @@
 const TelegramBot = require("node-telegram-bot-api");
-const chatIds = [
-  1551855614 /* @Real_Coder */, -1002292769502 /* Alcoders So'rovlar */,
-];
+// const chatIds = [
+//   // 1551855614 /* @Real_Coder */
+//   , -1002759754442 /* InnoCare So'rovlar */,
+// ];
+
+const chatId = -1002759754442; // InnoCare So'rovlar
 
 const bot = new TelegramBot(process.env.BOT_TOKEN, {
   polling: false,
@@ -9,7 +12,7 @@ const bot = new TelegramBot(process.env.BOT_TOKEN, {
 
 const FormSendMessage = async (req, res) => {
   try {
-    const { name, phone, message, productName } = req.body;
+    const { name, phone, message } = req.body;
 
     console.log(req.body, "req body");
 
@@ -19,20 +22,19 @@ const FormSendMessage = async (req, res) => {
     const currentTime = new Date().toLocaleTimeString("en-US", dateOptions);
 
     // Send message to Telegram
-    for (const chatId of chatIds) {
-      await bot.sendMessage(
-        chatId,
-        `
-        Alcoders.uz dan yangi xabar keldi: \n 
+    // for (const chatId of chatIds) {
+    await bot.sendMessage(
+      chatId,
+      `
+        innocare.uz dan yangi xabar keldi: \n 
         <b>● Ismi: </b>${name} 
         <b>● Telefon Raqami: </b>${phone} 
-        <b>● Mahsulot turi: </b>${productName}
         <b>● Xabar: </b>${message}
         <b>● Yuborilgan Sana : </b>${currentDate}
         <b>● Yuborilgan Soati : </b>${currentTime}`,
-        { parse_mode: "HTML" }
-      );
-    }
+      { parse_mode: "HTML" }
+    );
+    // }
 
     res.status(200).json({
       message: "Message sent successfully to all recipients.",
