@@ -12,7 +12,7 @@ const AboutsRoute = require("./src/modules/about/_api");
 const NewsRoute = require("./src/modules/news/_api");
 const PartnersRoute = require("./src/modules/partners/_api");
 const CertificatesRoute = require("./src/modules/certificates/_api");
-const SendMessage = require("./src/modules/sendMessage/_api");
+const ContactsRoute = require("./src/modules/contacts/_api");
 const Uploader = require("./src/modules/upload");
 
 const app = express();
@@ -24,7 +24,7 @@ app.use(express.json());
 
 app.use("/public", express.static("public"));
 
-app.use(SendMessage);
+app.use(ContactsRoute);
 app.use(UserRoute);
 app.use(Uploader);
 app.use(AdventagesRoute);
