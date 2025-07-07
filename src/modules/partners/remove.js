@@ -16,13 +16,14 @@ const removePartnersService = async ({ id }) => {
   if (existing.image) {
     let fileId;
 
-    // Agar image object bo'lsa va id mavjud bo'lsa
-    if (typeof existing.image[0] === "object" && existing.image[0].id) {
+    // Agar image array bo‘lib, ichida obyektlar bo‘lsa
+    if (Array.isArray(existing.image) && typeof existing.image[0] === "object" && existing.image[0].id) {
       fileId = existing.image[0].id;
     }
-    // Agar image string bo'lsa
-    else if (typeof existing[0].image === "string") {
-      fileId = existing[0].image;
+
+    // Agar image string bo‘lsa (yoki array emas bo‘lsa)
+    else if (typeof existing.image === "string") {
+      fileId = existing.image;
     }
 
     console.log(fileId, "fileID");
@@ -32,7 +33,6 @@ const removePartnersService = async ({ id }) => {
       const filePath = path.join(__dirname, "../../../public/", fileId);
       console.log("Fayl yo'li:", filePath);
 
-      // Fayl mavjud bo'lsa o'chirish
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);
         console.log("Fayl o'chirildi:", filePath);
@@ -42,7 +42,8 @@ const removePartnersService = async ({ id }) => {
     } else {
       console.log("Fayl ID topilmadi");
     }
-  } else {
+  }
+  else {
     console.log("Image maydoni mavjud emas");
   }
 
