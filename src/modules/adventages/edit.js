@@ -2,7 +2,8 @@ const { NotFoundError } = require("../../shared/errors");
 const Adventages = require("./Adventages");
 
 const editAdventagesService = async ({ id, ...changes }) => {
-  console.log(changes.changes);
+  if ('_id' in changes) delete changes._id;
+
   try {
     const updatedAdventages = await Adventages.findByIdAndUpdate(
       id,

@@ -1,21 +1,19 @@
 const { NotFoundError } = require("../../shared/errors");
 const About = require("./About");
 
-const editAboutService = async ({ id, ...changes }) => {
-  console.log(changes.changes);
-  try {
-    const updatedAbout = await About.findByIdAndUpdate(id, changes.changes, {
-      new: true,
-    });
+const editAboutService = async ({ id, changes }) => {
+  if ('_id' in changes) delete changes._id;
 
-    if (!updatedAbout) {
-      throw new NotFoundError("About Not Found.");
-    }
+  const updatedAbout = await About.findByIdAndUpdate(id, changes, {
+    new: true,
+  });
 
-    return updatedAbout;
-  } catch (error) {
-    throw error;
+  if (!updatedAbout) {
+    throw new NotFoundError("About Not Found.");
   }
+
+  return updatedAbout;
 };
+
 
 module.exports = editAboutService;
