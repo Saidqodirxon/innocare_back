@@ -13,6 +13,7 @@ const NewsRoute = require("./src/modules/news/_api");
 const PartnersRoute = require("./src/modules/partners/_api");
 const CertificatesRoute = require("./src/modules/certificates/_api");
 const ContactsRoute = require("./src/modules/contacts/_api");
+const BannersRoute = require("./src/modules/banners/_api");
 const Uploader = require("./src/modules/upload");
 
 const app = express();
@@ -33,6 +34,7 @@ app.use(ProductsRoute);
 app.use(AboutsRoute);
 app.use(NewsRoute);
 app.use(PartnersRoute);
+app.use(BannersRoute);
 app.use(CertificatesRoute);
 
 app.use(handleError);
