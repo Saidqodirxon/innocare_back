@@ -43,7 +43,7 @@ const postContact = async (req, res) => {
     `;
 
     // for (const chatId of chatIds) {
-    await bot.sendMessage(`-1002638687829`, telegramMessage, {
+    await bot.sendMessage(`-1002759754442`, telegramMessage, {
       parse_mode: "HTML",
     });
     // }
