@@ -12,8 +12,11 @@ const addProductsService = async (req) => {
       description_en,
       categoryId,
       image,
-      link,
-      file
+      link_1,
+      link_2,
+      link_3,
+      file,
+      is_visible
     } = req.body;
 
     const products = new Products({
@@ -25,8 +28,11 @@ const addProductsService = async (req) => {
       description_en,
       categoryId,
       image,
-      link,
-      file
+      link_1,
+      link_2,
+      link_3,
+      file,
+      is_visible
     });
 
     await products.save();

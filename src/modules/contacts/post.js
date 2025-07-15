@@ -14,7 +14,7 @@ const chatId = -1002759754442;
 
 const postContact = async (req, res) => {
   try {
-    const { name, phone } = req.body;
+    const { name, phone, message } = req.body;
 
     if (!name || !phone) {
       return res.status(400).json({ error: "Name and phone are required." });
@@ -24,6 +24,7 @@ const postContact = async (req, res) => {
     const contact = new Contacts({
       name,
       phone,
+      message
     });
     const savedContact = await contact.save();
 
@@ -35,11 +36,12 @@ const postContact = async (req, res) => {
 
     // Telegramga xabar yuborish
     const telegramMessage = `
-      ${siteUrl} dan yangi xabar keldi: \n 
+      ${siteUrl || "INNOCARE"} dan yangi xabar keldi: \n 
       <b>● Ismi: </b>${name} 
       <b>● Telefon Raqami: </b>${phone} 
       <b>● Yuborilgan Sana: </b>${currentDate}
       <b>● Yuborilgan Soati: </b>${currentTime}
+      <b>● Xabar: </b>${message || "Xabar mavjud emas"}
     `;
 
     // for (const chatId of chatIds) {

@@ -11,7 +11,10 @@ exports.addProductsSchema = {
     categoryId: Joi.string(),
     file: Joi.object(),
     image: Joi.array(),
-    link: Joi.string(),
+    link_1: Joi.string(),
+    link_2: Joi.string(),
+    link_3: Joi.string(),
+    is_visible: Joi.boolean(),
   }),
 };
 
@@ -30,7 +33,10 @@ exports.patchProductsSchema = {
     categoryId: Joi.string(),
     file: Joi.object(),
     image: Joi.array(),
-    link: Joi.string(),
+    link_1: Joi.string(),
+    link_2: Joi.string(),
+    link_3: Joi.string(),
+    is_visible: Joi.boolean(),
   }),
 };
 
@@ -38,7 +44,6 @@ exports.allProductsSchema = {
   query: Joi.object({
     q: Joi.string(),
     is_visible: Joi.string().valid("true", "false"),
-    view: Joi.string().valid("1", "2", "all"),
     categoryId: Joi.string().optional(), // Add categoryId as optional string (or use .required() if mandatory)
     sort: Joi.object({
       by: Joi.string().valid("_id"),

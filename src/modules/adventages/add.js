@@ -3,7 +3,7 @@ const Adventages = require("./Adventages");
 let SITE_URL = process.env.SITE_URL;
 const addAdventagesService = async (req) => {
   try {
-    const { name_uz, name_ru, description_uz, description_ru, name_en, description_en, link } =
+    const { name_uz, name_ru, description_uz, description_ru, name_en, description_en, link, image } =
       req.body;
 
     const adventages = new Adventages({
@@ -14,6 +14,7 @@ const addAdventagesService = async (req) => {
       description_ru,
       description_en,
       link,
+      image
     });
 
     await adventages.save();

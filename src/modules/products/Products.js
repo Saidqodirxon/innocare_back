@@ -46,7 +46,13 @@ const ProductsSchema = new mongoose.Schema(
       type: mongoose.SchemaTypes.Array,
       default: [],
     },
-    link: {
+    link_1: {
+      type: mongoose.SchemaTypes.String,
+    },
+    link_2: {
+      type: mongoose.SchemaTypes.String,
+    },
+    link_3: {
       type: mongoose.SchemaTypes.String,
     },
   },

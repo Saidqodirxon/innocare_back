@@ -9,6 +9,10 @@ exports.addAdventagesSchema = {
     description_ru: Joi.string(),
     description_en: Joi.string(),
     link: Joi.string(),
+    image: Joi.object({
+      url: Joi.string(),
+      id: Joi.string(),
+    }),
   }),
 };
 
@@ -24,6 +28,10 @@ exports.patchAdventagesSchema = {
     description_uz: Joi.string(),
     description_ru: Joi.string(),
     description_en: Joi.string(),
+    image: Joi.object({
+      url: Joi.string(),
+      id: Joi.string(),
+    }),
     link: Joi.string(),
   }),
 };

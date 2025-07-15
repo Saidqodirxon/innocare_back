@@ -16,23 +16,18 @@ const removeAdventagesService = async ({ id }) => {
   if (existing.image) {
     let fileId;
 
-    // Agar image object bo'lsa va id mavjud bo'lsa
-    if (typeof existing.image[0] === "object" && existing.image[0].id) {
-      fileId = existing.image[0].id;
+    if (Array.isArray(existing.image)) {
+      // Massiv ichida obyekt bor va u id bilan
+      if (typeof existing.image[0] === "object" && existing.image[0]?.id) {
+        fileId = existing.image[0].id;
+      }
+    } else if (typeof existing.image === "string") {
+      // Image to'g'ridan-to'g'ri string
+      fileId = existing.image;
     }
-    // Agar image string bo'lsa
-    else if (typeof existing[0].image === "string") {
-      fileId = existing[0].image;
-    }
-
-    console.log(fileId, "fileID");
-    console.log(id, "ID");
 
     if (fileId) {
       const filePath = path.join(__dirname, "../../../public/", fileId);
-      console.log("Fayl yo'li:", filePath);
-
-      // Fayl mavjud bo'lsa o'chirish
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);
         console.log("Fayl o'chirildi:", filePath);
@@ -42,7 +37,8 @@ const removeAdventagesService = async ({ id }) => {
     } else {
       console.log("Fayl ID topilmadi");
     }
-  } else {
+  }
+  else {
     console.log("Image maydoni mavjud emas");
   }
 
