@@ -55,6 +55,10 @@ const ProductsSchema = new mongoose.Schema(
     link_3: {
       type: mongoose.SchemaTypes.String,
     },
+    is_visible: {
+      type: mongoose.SchemaTypes.Boolean,
+      default: false,
+    },
   },
   {
     versionKey: false,
