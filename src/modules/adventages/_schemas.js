@@ -12,6 +12,7 @@ exports.addAdventagesSchema = {
     image: Joi.object({
       url: Joi.string(),
       id: Joi.string(),
+      _id: Joi.string(),
     }),
   }),
 };
@@ -31,6 +32,7 @@ exports.patchAdventagesSchema = {
     image: Joi.object({
       url: Joi.string(),
       id: Joi.string(),
+      _id: Joi.string(),
     }),
     link: Joi.string(),
   }),
