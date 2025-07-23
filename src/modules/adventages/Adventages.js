@@ -40,7 +40,6 @@ const AdventagesSchema = new mongoose.Schema(
     },
     link: {
       type: mongoose.SchemaTypes.String,
-      required: true,
     },
   },
   {
