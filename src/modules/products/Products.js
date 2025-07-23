@@ -28,7 +28,7 @@ const ProductsSchema = new mongoose.Schema(
     },
     categoryId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "products",
+      ref: "Categories",
     },
     file: {
       type: {
@@ -42,9 +42,16 @@ const ProductsSchema = new mongoose.Schema(
         },
       },
     },
+    brandId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "Brands",
+    },
     image: {
       type: mongoose.SchemaTypes.Array,
       default: [],
+    },
+    video: {
+      type: mongoose.SchemaTypes.String,
     },
     link_1: {
       type: mongoose.SchemaTypes.String,
