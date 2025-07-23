@@ -12,11 +12,11 @@ exports.addProductsSchema = {
     file: Joi.object(),
     brandId: Joi.string(),
     image: Joi.array(),
-    video: Joi.string(),
-    link_1: Joi.string(),
-    link_2: Joi.string(),
-    link_3: Joi.string(),
-    is_visible: Joi.boolean(),
+    video: Joi.string().optional(),
+    link_1: Joi.string().optional(),
+    link_2: Joi.string().optional(),
+    link_3: Joi.string().optional(),
+    is_visible: Joi.boolean().optional(),
   }),
 };
 
@@ -36,11 +36,11 @@ exports.patchProductsSchema = {
     file: Joi.object(),
     brandId: Joi.string(),
     image: Joi.array(),
-    video: Joi.string(),
-    link_1: Joi.string(),
-    link_2: Joi.string(),
-    link_3: Joi.string(),
-    is_visible: Joi.boolean(),
+    video: Joi.string().optional(),
+    link_1: Joi.string().optional(),
+    link_2: Joi.string().optional(),
+    link_3: Joi.string().optional(),
+    is_visible: Joi.boolean().optional(),
   }),
 };
 
