@@ -8,7 +8,7 @@ exports.addAdventagesSchema = {
     description_uz: Joi.string(),
     description_ru: Joi.string(),
     description_en: Joi.string(),
-    link: Joi.string().optional(),
+    link: Joi.string().optional().allow("", null),
     image: Joi.object({
       url: Joi.string(),
       id: Joi.string(),
@@ -34,7 +34,7 @@ exports.patchAdventagesSchema = {
       id: Joi.string(),
       _id: Joi.string(),
     }),
-    link: Joi.string().optional(),
+    link: Joi.string().optional().allow("", null),
   }),
 };
 
