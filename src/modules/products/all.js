@@ -1,8 +1,9 @@
 const Categories = require("../categories/Categories");
 const Products = require("./Products");
+
 const allProductsService = async (query) => {
   try {
-    const { q, page, limit, sort, is_visible, view, categoryId, all } =
+    const { q, page, limit, sort, is_visible, is_view, categoryId, all } =
       query || {};
 
     const sortOptions = {};
@@ -27,23 +28,30 @@ const allProductsService = async (query) => {
     // 🔽 Query filter
     const filter = {};
 
-    // If search query `q` exists, apply it to the fields you want to search
+    // 🔍 Search query
     if (q) {
-      const regex = new RegExp(q, "i"); // "i" for case-insensitive search
+      const regex = new RegExp(q, "i");
       filter.$or = [
         { name_uz: { $regex: regex } },
         { description_uz: { $regex: regex } },
       ];
     }
 
+    // 👁 is_visible filter
     if (typeof is_visible !== "undefined" && is_visible !== "all") {
       filter.is_visible = is_visible === "true";
     }
 
-    if (typeof view !== "undefined" && view !== "all") {
-      filter.view = parseInt(view);
+    // 👁‍🗨 is_view filter: string "true", "false", "all"
+    if (typeof is_view !== "undefined" && is_view !== "all") {
+      if (is_view === "true") {
+        filter.is_view = true;
+      } else if (is_view === "false") {
+        filter.is_view = false;
+      }
     }
 
+    // 📂 categoryId filter
     if (typeof categoryId !== "undefined" && categoryId !== "all") {
       filter.categoryId = categoryId;
     }
