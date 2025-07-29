@@ -112,7 +112,7 @@ const getProducts = async (req, res, next) => {
       sort: query.sort,
       page: { limit, offset },
       is_visible: query.is_visible,
-      view: query.view,
+      is_view: query.is_view,
       categoryId: query.categoryId, // Pass categoryId to service
     });
 
